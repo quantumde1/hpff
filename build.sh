@@ -1,14 +1,14 @@
 #!/bin/sh
 
 # Variables
-SRC="src/main.c"
+SRC="src/lib.c"
 LIB_NAME="libhpff.so"
 INSTALL_DIR="/usr/local/lib"
 
 # Function to build the shared library
 build() {
     echo "Building shared library..."
-    gcc -fPIC -shared -o "$LIB_NAME" "$SRC"
+    gcc -march=native -O3 -fPIC -shared -o "$LIB_NAME" "$SRC"
     if [ $? -ne 0 ]; then
         echo "Build failed!"
         exit 1
